@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import  {useState, useEffect} from 'react';
 import {nanoid} from 'nanoid';
 import '../components/App.css';
 import ContactForm from './ContactForm/ContactForm';
@@ -6,30 +6,30 @@ import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 
 
-
 export default function App()  {
+  
   const [contacts, setContacts] = useState([]);
+  
+  
+  
+  
+  
   const[filter, setFilter] = useState('');
 
-
-  componentDidMount() {
-    //console.log('App componentDidMount');
-
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
+useEffect(() => {
+    const savedContacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.stringify(savedContacts);
     if (parsedContacts) {
-      this.setState({ contacts: parsedContacts })
+       setContacts(parsedContacts);  
     }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    //console.log('App componentDidUpdate');
-
-    if (this.state.contacts !== prevState.contacts) {
-      //console.log('Обновилось поле contacts, записываю contacts в хранилище');
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));  
+  }, []);
+  
+  useEffect(() => {
+    if (!contacts.length){
+      return;
     }
-  }
+    localStorage.setItem ('contacts', JSON.stringify(contacts));
+  });
 
  const onCheckContact = value => {
     return contacts.find(item => item.name.toLowerCase() === value.toLowerCase());
@@ -47,7 +47,7 @@ export default function App()  {
       return;
     }
 
-    setContacts(contacts  => [contact, ...contacts];
+    setContacts(contacts  => [contact, ...contacts]);
   };
 
   const deleteContact = contactId => {
@@ -74,6 +74,6 @@ export default function App()  {
         <h2>Contacts</h2>
         <Filter value={filter} onChange={changeFilter} />
         <ContactList contacts={getVisibleContacts} onDeleteContact={deleteContact} />
-      </AppContainer>>
+      </AppContainer>
     );
   }
