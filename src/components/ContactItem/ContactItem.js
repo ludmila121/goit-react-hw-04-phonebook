@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './ContactItem.module.css';
+import {ContactData, ContactsItem} from './ContactItem.styled';
 
 const ContactItem = ({contacts: {id, name, number}, onDeleteContact}) => {
     return (
-        <li className={s.contactItem}>
-            <p className = {s.contactData}>
+        <ContactsItem>
+            <ContactData>
                 {name}:{number}
-            </p>
+            </ContactData>
             <button onClick = {() => onDeleteContact(id)}>Delete</button>
-        </li>
+        </ContactsItem>
     );
 };
 

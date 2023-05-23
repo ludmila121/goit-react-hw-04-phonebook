@@ -1,3 +1,7 @@
+import {} from '@emotion/styled';
+import 'normalize.css';
+ 
+export const GlobalStyle = createGlobalStyle`
 
 body {
   margin: 0;
@@ -27,3 +31,4 @@ button {
   cursor: pointer;
   height: 22px;
 }
+`;
