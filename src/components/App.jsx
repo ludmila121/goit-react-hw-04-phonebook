@@ -8,7 +8,7 @@ import { AppContainer } from './App.styled';
 
 export default function App()  {
   
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState([useEffect]);
   
   
   
@@ -16,21 +16,21 @@ export default function App()  {
   
   const[filter, setFilter] = useState('');
 
-useEffect(() => {
+/* useEffect(() => {
     const savedContacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.stringify(savedContacts);
     if (parsedContacts) {
        setContacts(parsedContacts);  
     }
   }, []);
-  
-  useEffect(() => {
+   */
+  /* useEffect(() => {
     if (!contacts.length){
       return;
     }
     localStorage.setItem ('contacts', JSON.stringify(contacts));
   });
-
+ */
  const onCheckContact = value => {
     return contacts.find(item => item.name.toLowerCase() === value.toLowerCase());
   };
@@ -60,10 +60,9 @@ useEffect(() => {
   };
 
   const  getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-
-    return contacts.filter(({name}) => name.toLowerCase().includes(normalizedFilter));
-  };
+    const normalizedFilter = filter.toLowerCase(); }
+console.log(contacts);
+    return {};
 
 
     return (
@@ -73,7 +72,7 @@ useEffect(() => {
 
         <h2>Contacts</h2>
         <Filter value={filter} onChange={changeFilter} />
-        <ContactList contacts={getVisibleContacts} onDeleteContact={deleteContact} />
+        <ContactList contacts={getVisibleContacts()} onDeleteContact={deleteContact} />
       </AppContainer>
     );
-  }
+    }

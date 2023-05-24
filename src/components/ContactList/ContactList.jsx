@@ -1,14 +1,14 @@
 import React from 'react';
 import ContactItem from '../ContactItem/ContactItem';
-import  {Contacts}  from './ContactList.styled';
+import  {Contact}  from './ContactList.styled';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
   return (
-    <Contacts>
+    <Contact>
       {contacts.map(contact => (
         <ContactItem key={contact.id} onDeleteContact={onDeleteContact} contacts={contact} />
       ))}
-    </Contacts>
+    </Contact>
   );
 };
 
