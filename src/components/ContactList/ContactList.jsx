@@ -1,6 +1,6 @@
 import React from 'react';
-import ContactItem from '../ContactItem';
-import { Contacts } from './ContactList.styled';
+import ContactItem from '../ContactItem/ContactItem';
+import  {Contacts}  from './ContactList.styled';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
   return (

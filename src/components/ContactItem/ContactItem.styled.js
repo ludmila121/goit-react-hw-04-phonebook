@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const ContactItem = styled.p`
+export const ContactsItem = styled.p`
     display: flex;
     justify-content: space-between;
     align-items: center;

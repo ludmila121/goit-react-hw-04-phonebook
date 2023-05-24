@@ -5,7 +5,6 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import { AppContainer } from './App.styled';
-import { GlobalStyle } from '../GlobalStyle';
 
 export default function App()  {
   
@@ -69,7 +68,6 @@ useEffect(() => {
 
     return (
       <AppContainer>
-        <GlobalStyle/>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={addContact} />
 
