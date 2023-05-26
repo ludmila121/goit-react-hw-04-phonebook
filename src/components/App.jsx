@@ -8,7 +8,7 @@ import { AppContainer } from './App.styled';
 
 export default function App()  {
   
-  const [contacts, setContacts] = useState([useEffect]);
+  const [contacts, setContacts] = useState([]);
   
   
   
@@ -16,21 +16,21 @@ export default function App()  {
   
   const[filter, setFilter] = useState('');
 
-/* useEffect(() => {
+useEffect(() => {
     const savedContacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.stringify(savedContacts);
     if (parsedContacts) {
        setContacts(parsedContacts);  
     }
   }, []);
-   */
-  /* useEffect(() => {
+ 
+   useEffect(() => {
     if (!contacts.length){
       return;
     }
     localStorage.setItem ('contacts', JSON.stringify(contacts));
   });
- */
+
  const onCheckContact = value => {
     return contacts.find(item => item.name.toLowerCase() === value.toLowerCase());
   };
@@ -60,10 +60,10 @@ export default function App()  {
   };
 
   const  getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase(); }
-console.log(contacts);
-    return {};
-
+    const normalizedFilter = filter.toLowerCase(); 
+    return contacts.filter(({ name }) => name.toLowerCase().includes(normalizedFilter));
+ 
+}
 
     return (
       <AppContainer>
@@ -75,4 +75,4 @@ console.log(contacts);
         <ContactList contacts={getVisibleContacts()} onDeleteContact={deleteContact} />
       </AppContainer>
     );
-    }
+    } 
