@@ -8,26 +8,26 @@ import { AppContainer } from './App.styled';
 
 export default function App()  {
   
-  const [contacts, setContacts] = useState([]);
-  
-  
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(window.localStorage.getItem('contacts')) ?? []
+  );
   
   
   
   const[filter, setFilter] = useState('');
 
-useEffect(() => {
+/* useEffect(() => {
     const savedContacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.stringify(savedContacts);
     if (parsedContacts) {
        setContacts(parsedContacts);  
     }
-  }, []);
+  }, []); */
  
    useEffect(() => {
-    if (!contacts.length){
+   /*  if (!contacts.length){
       return;
-    }
+    } */
     localStorage.setItem ('contacts', JSON.stringify(contacts));
   });
 
@@ -60,10 +60,11 @@ useEffect(() => {
   };
 
   const  getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase(); 
-    return contacts.filter(({ name }) => name.toLowerCase().includes(normalizedFilter));
- 
-}
+    console.log(contacts)
+        const normalizedFilter = filter.toLowerCase(); 
+        return contacts.filter(({ name }) => name.toLowerCase().includes(normalizedFilter));
+     
+    }
 
     return (
       <AppContainer>
